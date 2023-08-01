@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: staging_layer
+    schema: raw
+    tables:
+      - name: crm
+      - name: revenue
+      - name: devices
+
+models:
+  - name: crm
+    tests:
+    - dbt_expectations.expect_table_column_count_to_be_between:
+        min_value: 1 
+        max_value: 6
+    columns:
+      - name: gender
+        tests:
+        - dbt_expectations.expect_column_values_to_be_in_set:
+            value_set: ['Male','Female','Unknown']
+            quote_values: true
+            row_condition: "gender is not null"
+  
+  - name: devices
+    tests:
+      - dbt_expectations.expect_table_column_count_to_be_between:
+          min_value: 1 
+          max_value: 6
+  
+  - name: revenue
+    tests:
+    - dbt_expectations.expect_table_column_count_to_be_between:
+        min_value: 1 
+        max_value: 3
+    columns:
+      - name: MSISDN
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_not_be_null:
+              row_condition: "msisdn is not null"

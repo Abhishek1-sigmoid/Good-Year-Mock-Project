@@ -1,0 +1,7 @@
+name: 'telecom_analysis_project'
+
+models:
+  telecom_analysis_project:
+    curated_layer:
+      +schema: curated
+      +materialized: table
