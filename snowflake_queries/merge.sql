@@ -240,7 +240,7 @@ with a_weekwise as (
     order by mobile_type,revenue_generated
 ), f_weekwise as (
     select
-        'revenue_overall_by_mobile_type' as "desc",
+        'revenue_weekwise_by_mobile_type' as "desc",
         null as gender,
         null as age,
         revenue.week_nubmer as week_nubmer,
@@ -366,7 +366,7 @@ with a_weekwise as (
     order by revenue_generated desc
 ), i_weekwise as (
     select
-        'revenue_overall_by_os_vendor' as "desc",
+        'revenue_weekwise_by_os_vendor' as "desc",
         null as gender,
         null as age,
         revenue.week_nubmer as week_nubmer,
@@ -489,7 +489,7 @@ with a_weekwise as (
     order by customer desc
 ), l_weekwise as (
     select
-        'total_customer_overall_by_mobile_type' as "desc",
+        'total_customer_weekwise_by_mobile_type' as "desc",
         null as gender,
         null as age,
         revenue.week_nubmer as week_nubmer,
